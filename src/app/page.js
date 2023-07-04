@@ -10,7 +10,6 @@ export default async function Home() {
   // };
   const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`)
   const res = await data.json()
-  console.log(res)
   return (
     <main className="flex flex-col justify-between p-24 py-12">
       <div>
@@ -18,7 +17,7 @@ export default async function Home() {
         <hr className='my-2' />
         <div className='grid grid-cols-fluid'>
           {
-            res.results.map((elm) => (
+            res?.results?.map((elm) => (
               <Movie
                 key={elm.id}
                 id={elm.id}
