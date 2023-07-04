@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 const Item = ({ params }) => {
   const [data, setData] = useState([])
   const { movie } = params
-  const imgPath = 'https://image.tmdb.org/t/p/original'
+  const [imgPath, setImgPath] = useState('')
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -23,6 +23,7 @@ const Item = ({ params }) => {
         .request(options)
         .then((response) => {
           setData(response.data);
+          setImgPath(`https://image.tmdb.org/t/p/original${response.data.backdrop_path}`)
         })
         .catch((error) => {
           console.error(error);
@@ -38,10 +39,13 @@ const Item = ({ params }) => {
       <hr className='my-2' />
       <h2 className='text-sm'>Release Date : {data.release_date}</h2>
       <h2 className='text-sm'>Runtime : {data.runtime} minutes </h2>
-      <h2 className='text-sm bg-green-600 w-min my-2 py-2 px-4 rounded-md'>{data.status}</h2>
+      <div className='flex flex-row '>
+        <h2 className='text-sm bg-green-600 my-2 py-2 px-4 rounded-md'>Status: {data.status}</h2>
+        <button className='text-sm mx-4 my-2 py-2 px-4 rounded-md bg-blue-600'>Watch Now</button>
+      </div>
       <Image
         className='my-12 w-full'
-        src={imgPath + data.backdrop_path}
+        src={`${imgPath}`}
         width={2000}
         height={2000}
         alt={`${data.title}`}
