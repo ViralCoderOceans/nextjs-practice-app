@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import placeHolder from 'src/app/placeholder_ver.png'
 
 const Movie = ({ title, id, poster_path, release_date }) => {
   const imgPath = `https://image.tmdb.org/t/p/original${poster_path}`
@@ -10,7 +11,9 @@ const Movie = ({ title, id, poster_path, release_date }) => {
       <hr className='my-2' />
       <h2 className='mb-4 text-sm'>Release Date : {release_date}</h2>
       <Link href={`/${id}`}>
-        <Image src={`${imgPath}`} width={1000} height={1000} alt={`${title}`} />
+        {
+          imgPath ? <Image src={imgPath} width={1000} height={1000} alt={`${title}`} /> : <Image src={placeHolder} width={1000} height={1000} alt={`${title}`} />
+        }
       </Link>
     </div>
   )

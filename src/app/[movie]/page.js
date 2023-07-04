@@ -3,6 +3,7 @@
 import axios from 'axios'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
+import placeHolder from 'src/app/placeholder.png'
 
 const Item = ({ params }) => {
   const [data, setData] = useState([])
@@ -43,14 +44,23 @@ const Item = ({ params }) => {
         <h2 className='text-sm bg-green-600 my-2 py-2 px-4 rounded-md'>Status: {data.status}</h2>
         <button className='text-sm mx-4 my-2 py-2 px-4 rounded-md bg-blue-600'>Watch Now</button>
       </div>
-      <Image
-        className='my-12 w-full'
-        src={`${imgPath}`}
-        width={2000}
-        height={2000}
-        alt={`${data.title}`}
-        priority
-      />
+      {
+        imgPath ? <Image
+          className='my-12 w-full'
+          src={`${imgPath}`}
+          width={2000}
+          height={2000}
+          alt={`${data.title}`}
+          priority
+        /> : <Image
+          className='my-12 w-full'
+          src={placeHolder}
+          width={2000}
+          height={2000}
+          alt={`${data.title}`}
+          priority
+        />
+      }
       <p>{data.overview}</p>
     </div>
   )
