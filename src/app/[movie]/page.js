@@ -44,7 +44,7 @@ const Item = ({ params }) => {
         src={imgPath + data.backdrop_path}
         width={2000}
         height={2000}
-        alt={data.title}
+        alt={`${data.title}`}
         priority
       />
       <p>{data.overview}</p>

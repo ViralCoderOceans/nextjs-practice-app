@@ -10,7 +10,7 @@ const Movie = ({ title, id, poster_path, release_date }) => {
       <hr className='my-2' />
       <h2 className='mb-4 text-sm'>Release Date : {release_date}</h2>
       <Link href={`/${id}`}>
-        <Image src={imgPath + poster_path} width={1000} height={1000} alt={title} />
+        <Image src={imgPath + poster_path} width={1000} height={1000} alt={`${title}`} />
       </Link>
     </div>
   )
