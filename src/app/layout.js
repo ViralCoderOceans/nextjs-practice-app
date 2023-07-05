@@ -12,23 +12,25 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <nav className='flex flex-row justify-between mx-14 my-6'>
-          <h1 className='text-2xl font-bold'>
-            <Link href={`/`}>Movie app</Link>
-          </h1>
-          <ul className='flex flex-row'>
-            <li className='mx-4'>
-              <Link href={`/`}>
+      <body className={`${inter.className}`}>
+        <nav className='flex flex-row justify-between px-14 py-6 border-y  bg-zinc-950'>
+          <Link href={`/`}>
+            <h1 className='text-2xl p-1 px-3 font-semibold bg-white text-black'>
+              Movie_app
+            </h1>
+          </Link>
+          <ul className='flex flex-row items-center'>
+            <Link href={`/`}>
+              <li className='px-4 py-1 mr-2 hover:bg-white hover:text-black transition-all'>
                 Home
-              </Link>
-            </li>
-            <li className='mx-4'>
-              <Link href={`/about`}>
+              </li>
+            </Link>
+            <Link href={`/about`}>
+              <li className='px-4 py-1 hover:bg-white hover:text-black transition-all'>
                 About
-              </Link>
-            </li>
-            <li className='mx-4'>
+              </li>
+            </Link>
+            <li className='px-4 py-1 hover:bg-white hover:text-black transition-all'>
               Contact-Us
             </li>
           </ul>
