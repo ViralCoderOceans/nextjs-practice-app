@@ -2,6 +2,7 @@
 
 import useGetMovieDetails from '@/hooks/useGetMovieDetails'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import placeHolder from 'src/app/placeholder.png'
 
@@ -22,9 +23,15 @@ const Item = () => {
       <hr className='my-2' />
       <h2 className='text-sm'>Release Date : {movieDetails.release_date}</h2>
       <h2 className='text-sm'>Runtime : {movieDetails.runtime} minutes </h2>
-      <div className='flex flex-row '>
-        <h2 className='text-sm bg-green-600 my-2 py-2 px-4 rounded-md'>Status: {movieDetails.status}</h2>
-        {movieDetails?.homepage && (<button className='text-sm mx-4 my-2 py-2 px-4 rounded-md bg-blue-600'><a href={`${movieDetails?.homepage}`} target="_blank">Watch Now</a></button>)}
+      <div className='flex flex-row items-stretch'>
+        <h2 className='text-sm bg-green-600 my-2 py-2 px-4 flex items-center'>Status: {movieDetails.status}</h2>
+        {movieDetails?.homepage && (
+          <Link href={`${movieDetails?.homepage}`}>
+            <button className='text-sm font-semibold mx-4 my-2 py-2 px-4 border-2 border-blue-600 bg-blue-600 hover:bg-zinc-900 transition-all'>
+              Watch Now
+            </button>
+          </Link>
+        )}
       </div>
       {
         movieDetails.backdrop_path ? <Image

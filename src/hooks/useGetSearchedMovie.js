@@ -17,7 +17,6 @@ const useGetSearchedMovie = () => {
     await axios.request(options).then((response) => {
       if (response.status === 200) {
         setSearchMoviesData(response.data.results)
-        console.log(response.data.results)
       } else {
         console.error(response)
       }
