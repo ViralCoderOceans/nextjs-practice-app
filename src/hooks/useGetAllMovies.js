@@ -18,7 +18,7 @@ const useGetAllMovies = () => {
       if (response.status === 200) {
         setMovieData(response.data.results)
       } else {
-        console.error(response)
+        console.error('Error--------',response)
       }
     })
   }, [])
