@@ -1,13 +1,10 @@
 import axios from 'axios'
-import { useParams } from "next/navigation";
 import { useCallback, useState } from 'react'
 
 const useGetMovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState([])
-  const params = useParams();
-  const movie = params.movie;
 
-  const getMovieDetails = useCallback(async () => {
+  const getMovieDetails = useCallback(async (movie) => {
     const options = {
       method: 'GET',
       url: `https://api.themoviedb.org/3/movie/${movie}`,

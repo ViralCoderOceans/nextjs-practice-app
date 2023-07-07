@@ -8,7 +8,7 @@ const useGetAllMovies = () => {
     const options = {
       method: 'GET',
       url: `https://api.themoviedb.org/3/${api_url}`,
-      params: { language: 'en-US', page: '1', sort_by: 'created_at.asc' },
+      params: { language: 'en-US', page: '1', sort_by: 'created_at.desc' },
       headers: {
         accept: 'application/json',
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
