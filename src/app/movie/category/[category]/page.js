@@ -48,7 +48,7 @@ export default function NowPlaying() {
         {
           movieData.length === 0
             ? <>
-              <div className='flex flex-row justify-between items-center'>
+              <div className='animate-pulse flex flex-row justify-between items-center'>
                 <div className='flex flex-row justify-between my-1'>
                   <ul className='flex flex-row items-center'>
                     {
@@ -84,20 +84,26 @@ export default function NowPlaying() {
               <hr className='my-4 mt-1' />
             </>
         }
-        {movieData.length === 0
-          ? <FiveLoadingSke />
-          : <div className='grid grid-cols-fluid mt-4 gap-2 overflow-y-auto transition-all'>
-            {movieData.map((elm) => (
-              <Movie
-                key={elm.id}
-                id={elm.id}
-                title={elm.title}
-                poster_path={elm.poster_path}
-                release_date={elm.release_date}
-              />
-            ))}
-          </div>}
-      </div>
+        {
+          movieData.length === 0
+            ? <FiveLoadingSke />
+            : <>
+              <div className='grid grid-cols-fluid mt-4 gap-2 overflow-y-auto transition-all'>
+                {movieData.map((elm) => (
+                  <Movie
+                    key={elm.id}
+                    id={elm.id}
+                    title={elm.title}
+                    poster_path={elm.poster_path}
+                    release_date={elm.release_date}
+                    backdrop_path={elm.backdrop_path}
+                  />
+                ))}
+              </div>
+              {/* <div>Page</div> */}
+            </>
+        }
+      </div >
     </>
   )
 }
