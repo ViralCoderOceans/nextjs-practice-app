@@ -5,6 +5,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { createContext, useState } from 'react'
 import PictureInPicture from '@/components/PictureInPicture'
+import { usePathname } from 'next/navigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +18,8 @@ export default function RootLayout({ children }) {
     imgPath: '',
     movieId: ''
   })
-  const [menu, setMenu] = useState('');
+  const path = usePathname()
+  console.log(path);
   return (
     <html lang="en">
       <head>
@@ -32,18 +34,18 @@ export default function RootLayout({ children }) {
             </h1>
           </Link>
           <ul className='flex flex-row items-center'>
-            <li onClick={() => setMenu('home')} className='h-full'>
-              <Link href={`/`} className={`text-sm lg:text-base flex items-center px-1 lg:px-4 mr-2 h-full hover:bg-white hover:text-black transition-all ${menu === 'home' ? 'bg-white text-black' : ''}`}>
+            <li className='h-full'>
+              <Link href={`/`} className={`text-sm lg:text-base flex items-center px-1 lg:px-4 mr-2 h-full hover:bg-white hover:text-black transition-all ${path == '/' ? 'bg-white text-black' : ''}`}>
                 Home
               </Link>
             </li>
-            <li onClick={() => setMenu('about')} className='h-full'>
-              <Link href={`/about`} className={`text-sm lg:text-base flex items-center px-1 lg:px-4 mr-2 h-full hover:bg-white hover:text-black transition-all ${menu === 'about' ? 'bg-white text-black' : ''}`}>
+            <li className='h-full'>
+              <Link href={`/about`} className={`text-sm lg:text-base flex items-center px-1 lg:px-4 mr-2 h-full hover:bg-white hover:text-black transition-all ${path == '/about' ? 'bg-white text-black' : ''}`}>
                 About
               </Link>
             </li>
-            <li onClick={() => setMenu('profile')} className='h-full'>
-              <Link href={`/profile`} className={`text-sm lg:text-base flex items-center px-1 lg:px-4 mr-2 h-full hover:bg-white hover:text-black transition-all ${menu === 'profile' ? 'bg-white text-black' : ''}`}>
+            <li className='h-full'>
+              <Link href={`/profile`} className={`text-sm lg:text-base flex items-center px-1 lg:px-4 mr-2 h-full hover:bg-white hover:text-black transition-all ${path == '/profile' ? 'bg-white text-black' : ''}`}>
                 Profile
               </Link>
             </li>
