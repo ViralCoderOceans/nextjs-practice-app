@@ -117,6 +117,7 @@ export default function Home() {
                   title={elm.title}
                   poster_path={elm.poster_path}
                   release_date={elm.release_date}
+                  backdrop_path={elm.backdrop_path}
                 />
               ))}
             </div>
