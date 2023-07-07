@@ -1,18 +1,18 @@
+"use client"
+
 import Link from 'next/link'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Movie_app',
-  description: 'This is a movie-list app',
-}
-
 export default function RootLayout({ children }) {
+  const [menu, setMenu] = useState('');
   return (
     <html lang="en">
       <head>
+        <title>Movie_app</title>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${inter.className}`}>
@@ -23,22 +23,24 @@ export default function RootLayout({ children }) {
             </h1>
           </Link>
           <ul className='flex flex-row items-center'>
-            <li className='h-full'>
-              <Link href={`/`} className='text-sm lg:text-base flex items-center px-1 lg:px-4 mr-2 h-full hover:bg-white hover:text-black transition-all'>
+            <li onClick={() => setMenu('home')} className='h-full'>
+              <Link href={`/`} className={`text-sm lg:text-base flex items-center px-1 lg:px-4 mr-2 h-full hover:bg-white hover:text-black transition-all ${menu === 'home' ? 'bg-white text-black' : ''}`}>
                 Home
               </Link>
             </li>
-            <li className='h-full'>
-              <Link href={`/about`} className='text-sm lg:text-base flex items-center px-1 lg:px-4 py-1 h-full hover:bg-white hover:text-black transition-all'>
+            <li onClick={() => setMenu('about')} className='h-full'>
+              <Link href={`/about`} className={`text-sm lg:text-base flex items-center px-1 lg:px-4 mr-2 h-full hover:bg-white hover:text-black transition-all ${menu === 'about' ? 'bg-white text-black' : ''}`}>
                 About
               </Link>
             </li>
-            <li className='text-sm lg:text-base md:flex items-center hidden px-4 py-1 h-full hover:bg-white hover:text-black transition-all'>
-              Contact-Us
+            <li onClick={() => setMenu('profile')} className='h-full'>
+              <Link href={`/profile`} className={`text-sm lg:text-base flex items-center px-1 lg:px-4 mr-2 h-full hover:bg-white hover:text-black transition-all ${menu === 'profile' ? 'bg-white text-black' : ''}`}>
+                Profile
+              </Link>
             </li>
           </ul>
         </nav>
-        <div className="flex flex-col justify-between p-6 lg:px-24 lg:py-12 overflow-y-auto">
+        <div className="flex flex-col justify-between p-4 lg:px-24 lg:py-12 overflow-y-auto transition-all">
           {children}
         </div>
       </body>
