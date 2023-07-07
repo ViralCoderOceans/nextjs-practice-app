@@ -109,7 +109,7 @@ export default function Home() {
         {
           movieData.length === 0
             ? <FiveLoadingSke />
-            : <div className='grid grid-cols-fluid mt-4 gap-2 overflow-y-auto'>
+            : <div className='grid grid-cols-fluid mt-4 gap-2 overflow-y-auto transition-all'>
               {movieData.map((elm) => (
                 <Movie
                   key={elm.id}

@@ -66,20 +66,18 @@ export default function NowPlaying() {
               </div>
             </>
             : <>
-              <div className='flex flex-row justify-between items-center'>
-                <div className='flex flex-row justify-between my-1'>
-                  <ul className='flex flex-row items-center'>
-                    {
-                      allCategories.map((elm) => (
-                        <li key={elm.id}>
-                          <Link className={`px-4 py-1 mr-2 transition-all hover:bg-white hover:text-black ${elm.path === category ? 'bg-white text-black' : ''}`} href={`/movie/category/${elm.path}`}>
-                            {elm.title}
-                          </Link>
-                        </li>
-                      ))
-                    }
-                  </ul>
-                </div>
+              <div className='flex flex-row justify-between items-center my-1'>
+                <ul className='flex flex-row items-center'>
+                  {
+                    allCategories.map((elm) => (
+                      <li key={elm.id}>
+                        <Link className={`text-sm lg:text-base px-1 md:px-2 lg:px-4 py-1 mr-1 lg:mr-2 transition-all hover:bg-white hover:text-black ${elm.path === category ? 'bg-white text-black' : ''}`} href={`/movie/category/${elm.path}`}>
+                          {elm.title}
+                        </Link>
+                      </li>
+                    ))
+                  }
+                </ul>
               </div>
               <hr className='my-2 mb-1' />
               <h1 className='text-2xl font-bold py-2 bg-white text-black text-center'>{currentCategory.title}</h1>
@@ -88,7 +86,7 @@ export default function NowPlaying() {
         }
         {movieData.length === 0
           ? <FiveLoadingSke />
-          : <div className='grid grid-cols-fluid mt-4 gap-2 overflow-y-auto'>
+          : <div className='grid grid-cols-fluid mt-4 gap-2 overflow-y-auto transition-all'>
             {movieData.map((elm) => (
               <Movie
                 key={elm.id}
