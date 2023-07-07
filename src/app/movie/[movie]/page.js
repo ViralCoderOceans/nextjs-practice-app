@@ -3,18 +3,23 @@
 import useGetMovieDetails from '@/hooks/useGetMovieDetails'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import placeHolder from 'src/app/placeholder.png'
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
-import { useParams } from 'next/navigation'
+import PictureInPictureAltIcon from '@mui/icons-material/PictureInPictureAlt';
+import { useParams, useRouter } from 'next/navigation'
+import { piPContext } from '@/app/layout'
+// import usePip from '@/hooks/usePip'
 
 const Item = () => {
   const params = useParams()
   const { movie } = params
+  const router = useRouter()
   const { getMovieDetails, movieDetails } = useGetMovieDetails()
   const [genres, setGenres] = useState([])
   const [isFullScreen, setIsFullScreen] = useState(false)
+  const { setPictureInPicture } = useContext(piPContext);
   useEffect(() => {
     getMovieDetails(movie)
   }, [])
@@ -65,10 +70,24 @@ const Item = () => {
               </Link>
             </div>
             <div className='relative my-6'>
-              <button onClick={() => setIsFullScreen(true)} className='absolute top-0 right-0 flex items-center bg-black text-white border-2 border-white hover:bg-white hover:border-black hover:text-black transition-all px-2 py-1 z-[999]'>
-                <FullscreenIcon className='md:mr-2' />
-                <p className='hidden md:block'>Full-screen</p>
-              </button>
+              <div className='absolute top-0 right-0 z-[999] flex'>
+                <button onClick={() => {
+                  setPictureInPicture({
+                    isPIP: true,
+                    title: movieDetails.title,
+                    imgPath: `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`,
+                    movieId: movie
+                  })
+                  router.back()
+                }} className='flex items-center bg-black text-white border-2 border-white hover:bg-white hover:border-black hover:text-black transition-all px-2 py-1'>
+                  <PictureInPictureAltIcon />
+                  {/* <p className='hidden md:block'>Pip</p> */}
+                </button>
+                <button onClick={() => setIsFullScreen(true)} className='flex items-center bg-black text-white border-2 border-white hover:bg-white hover:border-black hover:text-black transition-all px-2 py-1'>
+                  <FullscreenIcon />
+                  {/* <p className='hidden md:block'>Full-screen</p> */}
+                </button>
+              </div>
               <Image
                 src={movieDetails.backdrop_path ? `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}` : placeHolder}
                 width={2000}
@@ -87,8 +106,8 @@ const Item = () => {
           :
           <>
             <button onClick={() => setIsFullScreen(false)} className='absolute top-0 right-0 m-2 md:m-6 flex items-center bg-black text-white border-2 border-white hover:bg-white hover:border-black hover:text-black transition-all px-2 py-1 z-[9999]'>
-              <FullscreenExitIcon className='md:mr-2' />
-              <p className='hidden md:block'>Exit</p>
+              <FullscreenExitIcon />
+              {/* <p className='hidden md:block'>Exit</p> */}
             </button>
             <div className='fixed top-0 left-0 h-screen z-[999] flex justify-center items-center'>
               <Image

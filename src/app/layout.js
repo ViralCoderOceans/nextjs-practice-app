@@ -3,11 +3,20 @@
 import Link from 'next/link'
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { useState } from 'react'
+import { createContext, useState } from 'react'
+import PictureInPicture from '@/components/PictureInPicture'
 
 const inter = Inter({ subsets: ['latin'] })
 
+export const piPContext = createContext();
+
 export default function RootLayout({ children }) {
+  const [pictureInPicture, setPictureInPicture] = useState({
+    isPIP: false,
+    title: '',
+    imgPath: '',
+    movieId: ''
+  })
   const [menu, setMenu] = useState('');
   return (
     <html lang="en">
@@ -40,9 +49,12 @@ export default function RootLayout({ children }) {
             </li>
           </ul>
         </nav>
-        <div className="flex flex-col justify-between p-4 lg:px-24 lg:py-12 overflow-y-auto transition-all">
-          {children}
-        </div>
+        <piPContext.Provider value={{ pictureInPicture, setPictureInPicture }}>
+          <div className="flex flex-col justify-between p-4 lg:px-24 lg:py-12 overflow-y-auto transition-all">
+            {children}
+            {pictureInPicture.isPIP && <PictureInPicture />}
+          </div>
+        </piPContext.Provider>
       </body>
     </html>
   )
