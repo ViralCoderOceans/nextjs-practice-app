@@ -20,15 +20,14 @@ export default function RootLayout({ children }) {
   })
   const [isMinimize, setIsMinimize] = useState(false)
   const path = usePathname()
-  console.log(path);
   return (
     <html lang="en">
       <head>
         <title>Movie_app</title>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={`${inter.className}`}>
-        <nav className='flex flex-row justify-between px-6 lg:px-24 border-y bg-zinc-950 hover:bg-zinc-900 transition-all'>
+      <body className={`${inter.className} flex flex-col h-screen relative overflow-hidden`}>
+        <nav className='w-full z-[99] flex flex-row justify-between px-6 lg:px-24 bg-zinc-950 hover:bg-zinc-900 transition-all'>
           <Link href={`/`}>
             <h1 className='text-lg md:text-xl lg:text-2xl px-1 lg:px-3 py-3 lg:py-6 font-semibold bg-white text-black transition-all'>
               Movie_app
@@ -46,16 +45,18 @@ export default function RootLayout({ children }) {
               </Link>
             </li>
             <li className='h-full'>
-              <Link href={`/profile`} className={`text-sm lg:text-base flex items-center px-1 lg:px-4 mr-2 h-full hover:bg-white hover:text-black transition-all ${path == '/profile' ? 'bg-white text-black' : ''}`}>
+              <Link href={`/profile`} className={`text-sm lg:text-base flex items-center px-1 lg:px-4 h-full hover:bg-white hover:text-black transition-all ${path == '/profile' ? 'bg-white text-black' : ''}`}>
                 Profile
               </Link>
             </li>
           </ul>
         </nav>
         <piPContext.Provider value={{ pictureInPicture, setPictureInPicture, isMinimize, setIsMinimize }}>
-          <div className="flex flex-col justify-between p-4 lg:px-24 lg:py-12 overflow-y-auto transition-all">
+          <div className="flex flex-col justify-between p-4 lg:px-24 lg:py-12 overflow-y-auto overflow-x-hidden transition-all">
             {children}
-            {pictureInPicture.isPIP && <PictureInPicture />}
+            <div className='absolute bottom-0 right-0 '>
+              {pictureInPicture.isPIP && <PictureInPicture />}
+            </div>
           </div>
         </piPContext.Provider>
       </body>
