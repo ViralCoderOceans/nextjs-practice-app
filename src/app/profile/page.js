@@ -4,15 +4,16 @@ import useGetUserData from '@/hooks/useGetUserData'
 import React, { useEffect } from 'react'
 import placeholder from '../placeholder_ver.png'
 import Image from 'next/image'
+import PermissionModal from '@/components/PermissionModal'
 
 const page = () => {
   const { getUserData, userData } = useGetUserData()
-  console.log('userData: ', userData);
   useEffect(() => {
     getUserData()
   }, [])
   return (
     <div>
+      <PermissionModal />
       {userData !== {} &&
         <>
           <hr className='my-2 mb-1' />
