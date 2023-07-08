@@ -15,7 +15,7 @@ const Movie = ({ title, id, poster_path, release_date, backdrop_path }) => {
       setPictureInPicture({
         ...pictureInPicture,
         title: title,
-        imgPath: `https://image.tmdb.org/t/p/original${backdrop_path}`,
+        imgPath: backdrop_path !== null ? `https://image.tmdb.org/t/p/original${backdrop_path}` : null,
         movieId: id
       })
     } else {
@@ -42,7 +42,7 @@ const Movie = ({ title, id, poster_path, release_date, backdrop_path }) => {
             image.classList.remove('bg-zinc-800')
             image.classList.remove('h-[360px]')
           }}
-        // priority
+          priority
         />
       </div>
     </div >
