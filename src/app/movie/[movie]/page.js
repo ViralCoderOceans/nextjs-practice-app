@@ -89,14 +89,16 @@ const Item = () => {
                 </button>
               </div>
               <Image
+                draggable="false"
                 src={movieDetails.backdrop_path ? `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}` : placeHolder}
                 width={2000}
                 height={2000}
                 alt={`${movieDetails.title}`}
-                className='w-full transition-all opacity-0 blur-xl duration-[1s]'
+                className='w-full transition-all opacity-0 duration-[1s] animate-pulse bg-zinc-800'
                 onLoadingComplete={(image) => {
                   image.classList.remove('opacity-0')
-                  image.classList.remove('blur-xl')
+                  image.classList.remove('animate-pulse')
+                  image.classList.remove('bg-zinc-800')
                 }}
                 priority
               />
@@ -111,6 +113,7 @@ const Item = () => {
             </button>
             <div className='fixed top-0 left-0 h-screen z-[999] flex justify-center items-center'>
               <Image
+                draggable="false"
                 src={movieDetails.backdrop_path ? `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}` : placeHolder}
                 width={2000}
                 height={2000}
@@ -125,6 +128,7 @@ const Item = () => {
             </div>
             <div className='fixed top-0 left-0 h-screen z-[99] flex justify-center items-center bg-black'>
               <Image
+                draggable="false"
                 src={movieDetails.backdrop_path ? `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}` : placeHolder}
                 width={2000}
                 height={2000}

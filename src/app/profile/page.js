@@ -20,6 +20,7 @@ const page = () => {
           <hr className='my-4 mt-1' />
           <div className='flex items-center m-4'>
             <Image
+              draggable="false"
               src={
                 userData?.avatar?.tmdb.avatar_path
                   ? `https://image.tmdb.org/t/p/original${userData.avatar.tmdb.avatar_path}`
@@ -28,7 +29,7 @@ const page = () => {
               alt='profile-picture'
               width={1000}
               height={1000}
-              className='h-20 w-20 transition-all opacity-0 blur-xl duration-[1s] object-cover'
+              className='h-20 w-20 transition-all opacity-0 blur-xl duration-[1s] object-cover rounded-full'
               onLoadingComplete={(image) => {
                 image.classList.remove('opacity-0')
                 image.classList.remove('blur-xl')
