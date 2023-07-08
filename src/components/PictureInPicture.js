@@ -28,12 +28,10 @@ const PictureInPicture = () => {
                 })
                 } className='flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                   <OpenInNewIcon className='-rotate-90' />
-                  {/* <p className='hidden md:block'>Pip</p> */}
                 </button>
               </Link>
               <button onClick={() => setIsMinimize(isMinimize ? false : true)} className='flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                 {!isMinimize ? <MinimizeIcon /> : <MaximizeIcon />}
-                {/* <p className='hidden md:block'>Pip</p> */}
               </button>
               <button onClick={() => setPictureInPicture({
                 isPIP: false,
@@ -43,7 +41,6 @@ const PictureInPicture = () => {
               })
               } className='flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                 <CloseIcon />
-                {/* <p className='hidden md:block'>Pip</p> */}
               </button>
             </div>
             {
@@ -57,7 +54,6 @@ const PictureInPicture = () => {
                 className='h-full transition-all opacity-0 duration-[1s] object-cover animate-pulse bg-zinc-800'
                 onLoadingComplete={(image) => {
                   image.classList.remove('opacity-0')
-                  // image.classList.remove('blur-xl')
                   image.classList.remove('animate-pulse')
                   image.classList.remove('bg-zinc-800')
                 }}
@@ -75,12 +71,10 @@ const PictureInPicture = () => {
                   })
                   } className='flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                     <OpenInNewIcon className='-rotate-90' />
-                    {/* <p className='hidden md:block'>Pip</p> */}
                   </button>
                 </Link>
                 <button onClick={() => setIsMinimize(isMinimize ? false : true)} className='flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                   {!isMinimize ? <MinimizeIcon /> : <MaximizeIcon />}
-                  {/* <p className='hidden md:block'>Pip</p> */}
                 </button>
                 <button onClick={() => setPictureInPicture({
                   isPIP: false,
@@ -90,11 +84,10 @@ const PictureInPicture = () => {
                 })
                 } className='flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                   <CloseIcon />
-                  {/* <p className='hidden md:block'>Pip</p> */}
                 </button>
               </div>
               <p className='border-b-2 border-b-black'>
-              {pictureInPicture.title}
+                {pictureInPicture.title}
               </p>
             </div>
           </div>
