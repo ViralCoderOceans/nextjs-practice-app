@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
     imgPath: '',
     movieId: ''
   })
+  const [isMinimize, setIsMinimize] = useState(false)
   const path = usePathname()
   console.log(path);
   return (
@@ -51,7 +52,7 @@ export default function RootLayout({ children }) {
             </li>
           </ul>
         </nav>
-        <piPContext.Provider value={{ pictureInPicture, setPictureInPicture }}>
+        <piPContext.Provider value={{ pictureInPicture, setPictureInPicture, isMinimize, setIsMinimize }}>
           <div className="flex flex-col justify-between p-4 lg:px-24 lg:py-12 overflow-y-auto transition-all">
             {children}
             {pictureInPicture.isPIP && <PictureInPicture />}
