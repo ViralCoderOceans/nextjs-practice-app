@@ -64,8 +64,8 @@ const PictureInPicture = () => {
                 // priority
                 />
               }
-              <div className={`w-full py-1 lg:py-3 text-xl text-black font-semibold flex items-center ${!isMinimize ? 'justify-center' : 'justify-between px-4'} bg-white transition-all`}>
-                <div className={`${!isMinimize ? 'hidden' : 'flex'} transition-all`}>
+              <div className={`w-full py-1 text-lg lg:text-xl text-black font-medium lg:font-semibold flex items-center ${!isMinimize ? 'justify-center' : 'flex-col px-4'} bg-white transition-all`}>
+                <div className={`${!isMinimize ? 'hidden' : 'w-full flex justify-start'} transition-all`}>
                   <Link href={`/movie/${pictureInPicture.movieId}`}>
                     <button onClick={() => setPictureInPicture({
                       isPIP: false,
