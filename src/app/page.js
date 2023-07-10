@@ -28,6 +28,11 @@ export default function Home() {
         {
           movieData.length === 0
             ? <div className='animate-pulse my-1'>
+              <div className='flex flex-row items-center gap-2'>
+                <div className='h-11 w-[250px] bg-zinc-900'></div>
+                <div className='h-11 w-[90px] bg-zinc-900'></div>
+              </div>
+              <div className='my-2 bg-zinc-900 py-px h-px' />
               <div className='flex flex-col transition-all'>
                 <div className='my-1'>
                   <ul className='grid grid-cols-category gap-2 lg:gap-4 transition-all'>
@@ -38,28 +43,11 @@ export default function Home() {
                     }
                   </ul>
                 </div>
-                <div className='my-2 bg-zinc-900 py-px h-px' />
-                <div className='flex flex-row items-center gap-2'>
-                  <div className='h-11 w-[250px] bg-zinc-900'></div>
-                  <div className='h-11 w-[90px] bg-zinc-900'></div>
-                </div>
               </div>
             </div>
             : <>
               <div className='flex flex-col my-1 transition-all'>
-                <div className='my-1'>
-                  <ul className='grid grid-cols-category gap-2 lg:gap-4 transition-all'>
-                    {
-                      allCategories.map((elm) => (
-                        <li key={elm.id} onClick={() => push(`/movie/category/${elm.path}`)} className='flex justify-center cursor-pointer lg:text-base px-1 md:px-2 lg:px-4 py-1 mr-1 lg:mr-2 transition-all hover:bg-white hover:text-black'>
-                          {elm.title}
-                        </li>
-                      ))
-                    }
-                  </ul>
-                </div>
-                <hr className='my-2' />
-                <div className="flex max-w-md gap-x-1 md:gap-x-2 items-center transition-all">
+                <div className="flex max-w-md gap-x-2 items-center transition-all">
                   {/* <h1 className='text-sm md:text-xl font-normal px-1 transition-all'>Search:</h1> */}
                   <input
                     id="search"
@@ -76,6 +64,18 @@ export default function Home() {
                     searchMovies()
                     setIsSearched(true)
                   }} className="text-black hover:text-white font-semibold p-1.5 md:py-2 mg:px-4 border-2 border-white bg-white hover:bg-zinc-900 transition-all">Search</button>
+                </div>
+                <hr className='my-2' />
+                <div className='my-1'>
+                  <ul className='grid grid-cols-category gap-2 lg:gap-4 transition-all'>
+                    {
+                      allCategories.map((elm) => (
+                        <li key={elm.id} onClick={() => push(`/movie/category/${elm.path}`)} className='flex justify-center cursor-pointer lg:text-base px-1 md:px-2 lg:px-4 py-1 mr-1 lg:mr-2 transition-all hover:bg-white hover:text-black'>
+                          {elm.title}
+                        </li>
+                      ))
+                    }
+                  </ul>
                 </div>
               </div>
             </>
