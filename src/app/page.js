@@ -57,7 +57,7 @@ export default function Home() {
                       setSearchText(e.target.value)
                       setIsSearched(false)
                     }}
-                    className="min-w-0 flex-auto border-0 bg-white/5 p-2 md:px-3.5 md:py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset transition-all md:text-lg sm:leading-3"
+                    className="min-w-0 flex-auto border-0 bg-white/5 p-2 md:px-3.5 md:py-2 text-white shadow-sm focus:outline-zinc-600 transition-all md:text-lg sm:leading-3"
                     placeholder="Search movie here"
                   />
                   <button type="submit" onClick={() => {
