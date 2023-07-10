@@ -1,3 +1,5 @@
+export const COOKIE_NAME = 'MovieAppCookie'
+
 export const allCategories = [
     {
         id: 1,
