@@ -14,7 +14,8 @@ module.exports = {
       },
     },
     gridTemplateColumns: {
-      fluid: 'repeat(auto-fit,minmax(15rem,1fr))'
+      'movie': 'repeat(auto-fit,minmax(12rem,1fr))',
+      'category': 'repeat(auto-fit,minmax(10rem,1fr))'
     }
   },
   plugins: [],

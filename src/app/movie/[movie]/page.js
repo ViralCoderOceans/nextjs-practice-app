@@ -36,9 +36,9 @@ const Item = () => {
         !isFullScreen ? movieDetails.length === 0
           ? <>
             <div className='animate-pulse'>
-              <div className='my-2 mb-1 bg-zinc-900 h-px' />
+              <div className='my-2 mb-1 bg-zinc-900 py-px h-px' />
               <div className='text-2xl font-bold py-2 bg-zinc-900 h-12' />
-              <div className='my-2 mt-1 bg-zinc-900 h-px' />
+              <div className='my-2 mt-1 bg-zinc-900 py-px h-px' />
             </div>
             <div className='animate-pulse'>
               <div className='bg-zinc-900 h-5 w-full' />
