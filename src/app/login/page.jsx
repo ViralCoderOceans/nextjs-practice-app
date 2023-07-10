@@ -1,6 +1,29 @@
+'use client'
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import React from 'react'
 
 const page = () => {
+  const { push } = useRouter()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      username: e.currentTarget.username.value,
+      password: e.currentTarget.password.value,
+    };
+
+    try {
+      const { data } = await axios.post("/api/auth/login", payload);
+
+      console.log(JSON.stringify(data));
+
+      // redirect the user to /
+      push("/");
+    } catch (e) {
+      console.error(e.message);
+    }
+  };
   return (
     <>
       <div className='absolute top-0 left-0'>
@@ -12,7 +35,7 @@ const page = () => {
         <div className='bg-zinc-900 border-2 border-zinc-700 p-4 mx-4 md:mx-0 transition-all'>
           <h1 className='text-3xl font-semibold text-center m-4'>Login</h1>
           <hr className='my-2 border-zinc-700' />
-          <form className="flex flex-col gap-6 p-4">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-4">
             <div className='flex flex-col'>
               <label htmlFor="username" className='text-lg mb-3'>Username :</label>
               <input
