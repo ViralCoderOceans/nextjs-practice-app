@@ -3,15 +3,17 @@
 import Link from 'next/link'
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import PictureInPicture from '@/components/PictureInPicture'
 import { usePathname } from 'next/navigation'
+import axios from 'axios'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const piPContext = createContext();
 
 export default function RootLayout({ children }) {
+  const path = usePathname()
   const [pictureInPicture, setPictureInPicture] = useState({
     isPIP: false,
     title: '',
@@ -20,8 +22,11 @@ export default function RootLayout({ children }) {
   })
   const [isMinimize, setIsMinimize] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  console.log('isLoggedIn: ', isLoggedIn)
-  const path = usePathname()
+
+  useEffect(() => {
+    const { data } = axios.get("/api/auth/getUserDetails")
+    console.log(JSON.stringify(data));
+  }, [])
   return (
     <html lang="en">
       <head>
