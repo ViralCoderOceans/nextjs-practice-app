@@ -23,10 +23,10 @@ export default function RootLayout({ children }) {
   const [isMinimize, setIsMinimize] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  useEffect(() => {
-    const { data } = axios.get("/api/auth/getUserDetails")
-    console.log(JSON.stringify(data));
-  }, [])
+  // useEffect(() => {
+  //   const { data } = axios.get("/api/auth/getUserDetails")
+  //   console.log(JSON.stringify(data));
+  // }, [])
   return (
     <html lang="en">
       <head>
@@ -61,7 +61,7 @@ export default function RootLayout({ children }) {
           </nav>
         }
         <piPContext.Provider value={{ pictureInPicture, setPictureInPicture, isMinimize, setIsMinimize, isLoggedIn, setIsLoggedIn }}>
-          <div className="flex flex-col justify-between p-4 lg:px-24 lg:py-12 overflow-y-auto overflow-x-hidden transition-all">
+          <div id='myApp' className="next flex flex-col justify-between p-4 lg:px-24 lg:py-12 overflow-y-auto overflow-x-hidden transition-all">
             {children}
             <div className='absolute bottom-0 right-0 '>
               {pictureInPicture.isPIP && <PictureInPicture />}
