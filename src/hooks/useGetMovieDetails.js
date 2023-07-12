@@ -4,10 +4,10 @@ import { useCallback, useState } from 'react'
 const useGetMovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState([])
 
-  const getMovieDetails = useCallback(async (movie) => {
+  const getMovieDetails = useCallback(async (movieId) => {
     const options = {
       method: 'GET',
-      url: `https://api.themoviedb.org/3/movie/${movie}`,
+      url: `https://api.themoviedb.org/3/movie/${movieId}`,
       params: { language: 'en-US' },
       headers: {
         accept: 'application/json',

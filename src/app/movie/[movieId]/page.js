@@ -14,14 +14,14 @@ import { piPContext } from '@/app/layout'
 
 const Item = () => {
   const params = useParams()
-  const { movie } = params
+  const { movieId } = params
   const router = useRouter()
   const { getMovieDetails, movieDetails } = useGetMovieDetails()
   const [genres, setGenres] = useState([])
   const [isFullScreen, setIsFullScreen] = useState(false)
   const { setPictureInPicture } = useContext(piPContext);
   useEffect(() => {
-    getMovieDetails(movie)
+    getMovieDetails(movieId)
   }, [])
   useEffect(() => {
     if (movieDetails.length !== 0) {
@@ -76,7 +76,7 @@ const Item = () => {
                     isPIP: true,
                     title: movieDetails.title,
                     imgPath: `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`,
-                    movieId: movie
+                    movieId: movieId
                   })
                   router.back()
                 }} className='flex items-center bg-black text-white border-2 border-white hover:bg-white hover:border-black hover:text-black transition-all px-2 py-1'>
