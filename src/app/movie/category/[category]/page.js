@@ -1,18 +1,20 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import useGetAllMovies from '@/hooks/useGetAllMovies'
 import Link from 'next/link'
 import Movie from '@/app/Movie'
 import { useParams, useRouter } from 'next/navigation'
 import FiveLoadingSke from '@/components/FiveLoadingSke'
 import { allCategories } from '../../../../../constants/constants'
+import { piPContext } from '@/app/layout'
 
 export default function CategoryPage() {
   const { push } = useRouter()
   const params = useParams()
   const category = params.category
   const [currentCategory, setCurrentCategory] = useState({})
+  const { setIsModalOpen } = useContext(piPContext);
 
   const { getMovies, movieData } = useGetAllMovies()
   useEffect(() => {
@@ -61,14 +63,17 @@ export default function CategoryPage() {
             : <>
               <div className='grid grid-cols-movie mt-4 gap-2 overflow-y-auto transition-all'>
                 {movieData.map((elm) => (
-                  <Movie
-                    key={elm.id}
-                    id={elm.id}
-                    title={elm.title}
-                    poster_path={elm.poster_path}
-                    release_date={elm.release_date}
-                    backdrop_path={elm.backdrop_path}
-                  />
+                  <div key={elm.id} onClick={() => setIsModalOpen(true)}>
+                    <Link href={`/movie/${elm.id}`}>
+                      <Movie
+                        id={elm.id}
+                        title={elm.title}
+                        poster_path={elm.poster_path}
+                        release_date={elm.release_date}
+                        backdrop_path={elm.backdrop_path}
+                      />
+                    </Link>
+                  </div>
                 ))}
               </div>
               {/* <div>Page</div> */}

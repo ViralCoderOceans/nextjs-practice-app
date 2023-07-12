@@ -16,7 +16,7 @@ export default function Home() {
   const { getMovieDetails, searchMoviesData } = useGetSearchedMovie()
   const [searchText, setSearchText] = useState()
   const [isSearched, setIsSearched] = useState(false)
-  const { isModalOpen, setIsModalOpen } = useContext(piPContext);
+  const { setIsModalOpen } = useContext(piPContext);
   useEffect(() => {
     getMovies('account/20104985/favorite/movies')
   }, [])
@@ -94,14 +94,17 @@ export default function Home() {
                   ? <h1 className='text-xl text-center my-4'>No results found</h1>
                   : <div className='grid grid-cols-movie mt-4 gap-2'>
                     {searchMoviesData.map((elm) => (
-                      <Movie
-                        key={elm.id}
-                        id={elm.id}
-                        title={elm.title}
-                        poster_path={elm.poster_path}
-                        release_date={elm.release_date}
-                        backdrop_path={elm.backdrop_path}
-                      />
+                      <div key={elm.id} onClick={() => setIsModalOpen(true)}>
+                        <Link href={`/movie/${elm.id}`}>
+                          <Movie
+                            id={elm.id}
+                            title={elm.title}
+                            poster_path={elm.poster_path}
+                            release_date={elm.release_date}
+                            backdrop_path={elm.backdrop_path}
+                          />
+                        </Link>
+                      </div>
                     ))}
                   </div>
               }
