@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const piPContext = createContext();
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, modal }) {
   const path = usePathname()
   const [pictureInPicture, setPictureInPicture] = useState({
     isPIP: false,
@@ -22,10 +22,13 @@ export default function RootLayout({ children }) {
   })
   const [isMinimize, setIsMinimize] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   // useEffect(() => {
-  //   const { data } = axios.get("/api/auth/getUserDetails")
-  //   console.log(JSON.stringify(data));
+  //   (async () => {
+  //     const response = await axios.get("/api/auth/getUserDetails")
+  //     console.log('UserData', JSON.stringify(response.status))
+  //   })();
   // }, [])
   return (
     <html lang="en">
@@ -34,7 +37,16 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${inter.className} flex flex-col h-screen relative overflow-hidden`}>
-        {isLoggedIn &&
+        <piPContext.Provider value={{
+          pictureInPicture,
+          setPictureInPicture,
+          isMinimize,
+          setIsMinimize,
+          isLoggedIn,
+          setIsLoggedIn,
+          isModalOpen,
+          setIsModalOpen
+        }}>
           <nav className='w-full z-[99] flex flex-row justify-between px-6 lg:px-24 bg-zinc-950 hover:bg-zinc-900 transition-all'>
             <Link href={`/home`}>
               <h1 className='text-lg md:text-xl lg:text-2xl px-1 lg:px-3 py-3 lg:py-6 font-semibold bg-white text-black transition-all'>
@@ -59,14 +71,13 @@ export default function RootLayout({ children }) {
               </li>
             </ul>
           </nav>
-        }
-        <piPContext.Provider value={{ pictureInPicture, setPictureInPicture, isMinimize, setIsMinimize, isLoggedIn, setIsLoggedIn }}>
           <div id='myApp' className="next flex flex-col justify-between p-4 lg:px-24 lg:py-12 overflow-y-auto overflow-x-hidden transition-all">
             {children}
             <div className='absolute bottom-0 right-0 '>
               {pictureInPicture.isPIP && <PictureInPicture />}
             </div>
           </div>
+          {modal}
         </piPContext.Provider>
       </body>
     </html>

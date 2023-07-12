@@ -18,13 +18,16 @@ const Movie = ({ title, id, poster_path, release_date, backdrop_path }) => {
         imgPath: backdrop_path !== null ? `https://image.tmdb.org/t/p/original${backdrop_path}` : null,
         movieId: id
       })
-    }
+    } 
+    // else {
+    //   router.push(`/movie/${id}`)
+    // }
   }
   return (
     <div onClick={handleOnClick} className={`p-4 h-full flex flex-col justify-between text-center hover:bg-zinc-900 transition-all cursor-pointer`}>
       <h1 className='text-lg hover:font-semibold transition-all'>{title}</h1>
       <hr className='my-2' />
-      <h2 className='md:mb-2 lg:mb-4 text-sm transition-all'>Release Date : {release_date}</h2>
+      <h2 className='text-sm transition-all'>Release Date : {release_date}</h2>
       <div className='h-auto my-4'>
         <Image
           draggable="false"

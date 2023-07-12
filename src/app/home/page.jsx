@@ -1,12 +1,14 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import useGetAllMovies from '@/hooks/useGetAllMovies'
 import useGetSearchedMovie from '@/hooks/useGetSearchedMovie'
 import FiveLoadingSke from '@/components/FiveLoadingSke'
 import { useRouter } from 'next/navigation'
 import Movie from '../Movie'
 import { allCategories } from '../../../constants/constants'
+import Link from 'next/link'
+import { piPContext } from '../layout'
 
 export default function Home() {
   const { push } = useRouter()
@@ -14,6 +16,7 @@ export default function Home() {
   const { getMovieDetails, searchMoviesData } = useGetSearchedMovie()
   const [searchText, setSearchText] = useState()
   const [isSearched, setIsSearched] = useState(false)
+  const { isModalOpen, setIsModalOpen } = useContext(piPContext);
   useEffect(() => {
     getMovies('account/20104985/favorite/movies')
   }, [])
@@ -124,14 +127,17 @@ export default function Home() {
             ? <FiveLoadingSke />
             : <div className='grid grid-cols-movie mt-4 gap-2 overflow-y-auto transition-all'>
               {movieData.map((elm) => (
-                <Movie
-                  key={elm.id}
-                  id={elm.id}
-                  title={elm.title}
-                  poster_path={elm.poster_path}
-                  release_date={elm.release_date}
-                  backdrop_path={elm.backdrop_path}
-                />
+                <div key={elm.id} onClick={() => setIsModalOpen(true)}>
+                  <Link href={`/movie/${elm.id}`}>
+                    <Movie
+                      id={elm.id}
+                      title={elm.title}
+                      poster_path={elm.poster_path}
+                      release_date={elm.release_date}
+                      backdrop_path={elm.backdrop_path}
+                    />
+                  </Link>
+                </div>
               ))}
             </div>
         }
