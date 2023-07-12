@@ -17,7 +17,7 @@ const PictureInPicture = () => {
     <>
       {
         pictureInPicture.isPIP &&
-        <Draggable>
+        <Draggable cancel=".btn">
           <div>
             <div className={`border-2 border-white w-[250px] md:w-[250px] lg:w-[450px] z-[999] bg-black`}>
               <div className={`absolute top-[2px] z-[99] flex ${!isMinimize ? 'block' : 'hidden'} transition-all`}>
@@ -28,11 +28,11 @@ const PictureInPicture = () => {
                     imgPath: '',
                     movieId: ''
                   })
-                  } className='flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
+                  } className='btn flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                     <OpenInNewIcon className='-rotate-90' />
                   </button>
                 </Link>
-                <button onClick={() => setIsMinimize(isMinimize ? false : true)} className='flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
+                <button onClick={() => setIsMinimize(isMinimize ? false : true)} className='btn flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                   {!isMinimize ? <MinimizeIcon /> : <MaximizeIcon />}
                 </button>
                 <button onClick={() => setPictureInPicture({
@@ -41,7 +41,7 @@ const PictureInPicture = () => {
                   imgPath: '',
                   movieId: ''
                 })
-                } className='flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
+                } className='btn flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                   <CloseIcon />
                 </button>
               </div>
@@ -73,11 +73,11 @@ const PictureInPicture = () => {
                       imgPath: '',
                       movieId: ''
                     })
-                    } className='flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
+                    } className='btn flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                       <OpenInNewIcon className='-rotate-90' />
                     </button>
                   </Link>
-                  <button onClick={() => setIsMinimize(isMinimize ? false : true)} className='flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
+                  <button onClick={() => setIsMinimize(isMinimize ? false : true)} className='btn flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                     {!isMinimize ? <MinimizeIcon /> : <MaximizeIcon />}
                   </button>
                   <button onClick={() => setPictureInPicture({
@@ -86,7 +86,7 @@ const PictureInPicture = () => {
                     imgPath: '',
                     movieId: ''
                   })
-                  } className='flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
+                  } className='btn flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                     <CloseIcon />
                   </button>
                 </div>
