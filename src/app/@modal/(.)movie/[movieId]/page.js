@@ -11,7 +11,6 @@ import { piPContext } from '@/app/layout'
 
 const page = () => {
   const router = useRouter()
-  console.log('router: ', router);
   const { movieId } = useParams()
   const { getMovieDetails, movieDetails } = useGetMovieDetails()
   const [genres, setGenres] = useState([])
@@ -37,15 +36,15 @@ const page = () => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-[700px] lg:w-[1000px] max-h-full p-4 md:p-10 bg-zinc-900 text-white border border-white transition-all" >
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-[700px] lg:w-[1000px] max-h-full p-4 md:p-10 bg-zinc-900 text-white border border-white transition-all overflow-y-scroll" >
         <hr className='my-2 mb-1' />
         <div className='text-lg md:text-xl lg:text-2xl font-bold py-2 bg-white text-black px-4 flex sm:flex-row flex-col justify-between transition-all'>
           <div className='flex justify-center md:justify-start items-center transition-all'>
             {movieDetails.title}
           </div>
           <button onClick={() => {
-            // setIsModalOpen(false)
-            // router.reload();
+            setIsModalOpen(false)
+            window.location.reload();
           }} className='text-sm font-semibold py-2 px-4 text-white bg-black hover:bg-zinc-900 transition-all'>
             Go to page
           </button>
