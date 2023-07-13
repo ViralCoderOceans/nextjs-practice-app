@@ -5,10 +5,10 @@ import useGetAllMovies from '@/hooks/useGetAllMovies'
 import useGetSearchedMovie from '@/hooks/useGetSearchedMovie'
 import FiveLoadingSke from '@/components/FiveLoadingSke'
 import { useRouter } from 'next/navigation'
-import Movie from '../Movie'
-import { allCategories } from '../../../constants/constants'
+import Movie from './Movie'
+import { allCategories } from '../../constants/constants'
 import Link from 'next/link'
-import { piPContext } from '../layout'
+import { piPContext } from './layout'
 
 export default function Home() {
   const { push } = useRouter()

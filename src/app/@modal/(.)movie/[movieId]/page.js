@@ -31,7 +31,7 @@ const page = () => {
       open={isModalOpen}
       onClose={() => {
         setIsModalOpen(false)
-        router.push('/home')
+        router.push('/')
       }}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
