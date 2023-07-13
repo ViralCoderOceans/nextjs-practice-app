@@ -16,7 +16,7 @@ export default function Home() {
   const { getMovieDetails, searchMoviesData } = useGetSearchedMovie()
   const [searchText, setSearchText] = useState()
   const [isSearched, setIsSearched] = useState(false)
-  const { setIsModalOpen } = useContext(piPContext);
+  const { setIsModalOpen, pictureInPicture } = useContext(piPContext);
   useEffect(() => {
     getMovies('account/20104985/favorite/movies')
   }, [])
@@ -92,10 +92,10 @@ export default function Home() {
               {
                 searchMoviesData.length === 0
                   ? <h1 className='text-xl text-center my-4'>No results found</h1>
-                  : <div className='grid grid-cols-movie mt-4 gap-2'>
-                    {searchMoviesData.map((elm) => (
-                      <div key={elm.id} onClick={() => setIsModalOpen(true)}>
-                        <Link href={`/movie/${elm.id}`}>
+                  : pictureInPicture.isPIP
+                    ? <div className='grid grid-cols-movie mt-4 gap-2 overflow-y-auto transition-all'>
+                      {movieData.map((elm) => (
+                        <div key={elm.id}>
                           <Movie
                             id={elm.id}
                             title={elm.title}
@@ -103,10 +103,24 @@ export default function Home() {
                             release_date={elm.release_date}
                             backdrop_path={elm.backdrop_path}
                           />
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
+                        </div>
+                      ))}
+                    </div>
+                    : <div className='grid grid-cols-movie mt-4 gap-2 overflow-y-auto transition-all'>
+                      {movieData.map((elm) => (
+                        <div key={elm.id} onClick={() => setIsModalOpen(true)}>
+                          <Link href={`/movie/${elm.id}`}>
+                            <Movie
+                              id={elm.id}
+                              title={elm.title}
+                              poster_path={elm.poster_path}
+                              release_date={elm.release_date}
+                              backdrop_path={elm.backdrop_path}
+                            />
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
               }
             </>
           }
@@ -128,10 +142,10 @@ export default function Home() {
         {
           movieData.length === 0
             ? <FiveLoadingSke />
-            : <div className='grid grid-cols-movie mt-4 gap-2 overflow-y-auto transition-all'>
-              {movieData.map((elm) => (
-                <div key={elm.id} onClick={() => setIsModalOpen(true)}>
-                  <Link href={`/movie/${elm.id}`}>
+            : pictureInPicture.isPIP
+              ? <div className='grid grid-cols-movie mt-4 gap-2 overflow-y-auto transition-all'>
+                {movieData.map((elm) => (
+                  <div key={elm.id}>
                     <Movie
                       id={elm.id}
                       title={elm.title}
@@ -139,10 +153,24 @@ export default function Home() {
                       release_date={elm.release_date}
                       backdrop_path={elm.backdrop_path}
                     />
-                  </Link>
-                </div>
-              ))}
-            </div>
+                  </div>
+                ))}
+              </div>
+              : <div className='grid grid-cols-movie mt-4 gap-2 overflow-y-auto transition-all'>
+                {movieData.map((elm) => (
+                  <div key={elm.id} onClick={() => setIsModalOpen(true)}>
+                    <Link href={`/movie/${elm.id}`}>
+                      <Movie
+                        id={elm.id}
+                        title={elm.title}
+                        poster_path={elm.poster_path}
+                        release_date={elm.release_date}
+                        backdrop_path={elm.backdrop_path}
+                      />
+                    </Link>
+                  </div>
+                ))}
+              </div>
         }
       </div>
     </>

@@ -14,7 +14,7 @@ export default function CategoryPage() {
   const params = useParams()
   const category = params.category
   const [currentCategory, setCurrentCategory] = useState({})
-  const { setIsModalOpen } = useContext(piPContext);
+  const { setIsModalOpen, pictureInPicture } = useContext(piPContext);
 
   const { getMovies, movieData } = useGetAllMovies()
   useEffect(() => {
@@ -60,8 +60,21 @@ export default function CategoryPage() {
         {
           movieData.length === 0
             ? <FiveLoadingSke />
-            : <>
-              <div className='grid grid-cols-movie mt-4 gap-2 overflow-y-auto transition-all'>
+            : pictureInPicture.isPIP
+              ? <div className='grid grid-cols-movie mt-4 gap-2 overflow-y-auto transition-all'>
+                {movieData.map((elm) => (
+                  <div key={elm.id}>
+                    <Movie
+                      id={elm.id}
+                      title={elm.title}
+                      poster_path={elm.poster_path}
+                      release_date={elm.release_date}
+                      backdrop_path={elm.backdrop_path}
+                    />
+                  </div>
+                ))}
+              </div>
+              : <div className='grid grid-cols-movie mt-4 gap-2 overflow-y-auto transition-all'>
                 {movieData.map((elm) => (
                   <div key={elm.id} onClick={() => setIsModalOpen(true)}>
                     <Link href={`/movie/${elm.id}`}>
@@ -76,8 +89,6 @@ export default function CategoryPage() {
                   </div>
                 ))}
               </div>
-              {/* <div>Page</div> */}
-            </>
         }
       </div >
     </>
