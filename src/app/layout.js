@@ -25,7 +25,7 @@ export default function RootLayout({ children, modal }) {
   return (
     <html lang="en">
       <head>
-        <title>Movie_app</title>
+        <title>Movie Mania</title>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${inter.className} flex flex-col h-screen relative overflow-hidden`}>
@@ -40,7 +40,7 @@ export default function RootLayout({ children, modal }) {
           <nav className='w-full z-[99] flex flex-row justify-between px-6 lg:px-24 bg-zinc-950 hover:bg-zinc-900 transition-all'>
             <Link href={`/`}>
               <h1 className='text-lg md:text-xl lg:text-2xl px-1 lg:px-3 py-3 lg:py-6 font-semibold bg-white text-black transition-all'>
-                Movie_app
+                Movie Mania
               </h1>
             </Link>
             <ul className='flex flex-row items-center'>
