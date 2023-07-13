@@ -63,11 +63,16 @@ const Item = () => {
             <h2 className='text-base'>&bull; {movieDetails.release_date} &bull; {genres.join(', ')} &bull; {movieDetails.runtime} minutes </h2>
             <div className='flex flex-row items-stretch my-2'>
               <h2 className='text-sm bg-green-600 py-2 px-4 flex items-center mr-4'>Status: {movieDetails.status || 'Fetching...'}</h2>
-              <Link href={`${movieDetails?.homepage}`} target='_blank'>
-                <button className='text-sm font-semibold py-2 px-4 border-2 border-blue-600 bg-blue-600 hover:bg-zinc-900 transition-all'>
+              {movieDetails?.homepage
+                ? <Link href={`${movieDetails?.homepage}`} target='_blank'>
+                  <button className='text-sm font-semibold py-2 px-4 border-2 border-blue-600 bg-blue-600 hover:bg-zinc-900 transition-all'>
+                    Watch Now
+                  </button>
+                </Link>
+                : <button disabled className='text-sm text-zinc-600 cursor-no-drop font-semibold py-2 px-4 border-2 border-zinc-600 bg-zinc-900 transition-all'>
                   Watch Now
                 </button>
-              </Link>
+              }
             </div>
             <div className='relative my-6'>
               <div className='absolute top-0 right-0 z-[999] flex'>

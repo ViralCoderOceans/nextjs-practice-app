@@ -27,6 +27,34 @@ export default function Home() {
   }
   return (
     <>
+      {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 transition-all" >
+        <div className='p-4 md:p-10 w-full md:w-[700px] lg:w-[1000px] max-h-full bg-zinc-900 text-white border border-white overflow-y-auto'>
+          <div className='animate-pulse'>
+            <div className='my-2 mb-1 bg-zinc-800 py-px h-px' />
+            <div className='text-2xl font-bold py-2 bg-zinc-800 h-12' />
+            <div className='my-2 mt-1 bg-zinc-800 py-px h-px' />
+          </div>
+          <div className='animate-pulse'>
+            <div className='bg-zinc-800 h-6 w-full' />
+          </div>
+          <div className='animate-pulse flex gap-4 my-2'>
+            <div className='bg-zinc-800 h-10 w-[145px]' />
+            <div className='bg-zinc-800 h-10 w-[110px]' />
+          </div>
+          <div className='mt-2 md:mt-6 flex flex-row transition-all'>
+            <div className='animate-pulse bg-zinc-800 h-[240px] basis-1/2' />
+            <div className='animate-pulse basis-1/2 my-2 lg:mx-4 lg:my-0 transition-all'>
+              <div className='bg-zinc-800 h-4 w-full mb-1' />
+              <div className='bg-zinc-800 h-4 w-full mb-1' />
+              <div className='bg-zinc-800 h-4 w-full mb-1' />
+              <div className='bg-zinc-800 h-4 w-full mb-1' />
+              <div className='bg-zinc-800 h-4 w-full mb-1' />
+              <div className='bg-zinc-800 h-4 w-full mb-1' />
+              <div className='bg-zinc-800 h-4 w-5/12' />
+            </div>
+          </div>
+        </div>
+      </div> */}
       <div>
         {
           movieData.length === 0
