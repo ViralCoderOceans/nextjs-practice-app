@@ -38,7 +38,7 @@ export default function RootLayout({ children, modal }) {
           isModalOpen,
           setIsModalOpen
         }}>
-          <nav className='w-full z-[99] flex flex-row justify-between px-6 lg:px-24 bg-zinc-950 hover:bg-zinc-900 transition-all'>
+          <nav className='w-full z-[99] flex flex-row justify-between px-6 lg:px-24 text-white bg-zinc-900 transition-all'>
             <Link href={`/`}>
               <h1 className='text-lg md:text-xl lg:text-2xl px-1 lg:px-3 py-3 lg:py-6 font-semibold bg-white text-black transition-all'>
                 Movie Mania
@@ -62,7 +62,7 @@ export default function RootLayout({ children, modal }) {
               </li>
             </ul>
           </nav>
-          <div id='myApp' className="next flex flex-col justify-between p-4 lg:px-24 lg:py-12 overflow-y-auto overflow-x-hidden transition-all">
+          <div id='myApp' className="next h-full flex flex-col text-white justify-between p-4 lg:px-24 lg:py-12 overflow-y-auto bg-black overflow-x-hidden transition-all">
             {children}
             <div className='absolute bottom-0 right-0 '>
               {pictureInPicture.isPIP && <PictureInPicture />}

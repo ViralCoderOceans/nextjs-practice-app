@@ -50,7 +50,6 @@ export default function Home() {
             </div>
             : <>
               <div className='flex flex-col my-1 transition-all'>
-                {/* <h1 className='text-sm md:text-xl font-normal px-1 transition-all'>Search:</h1> */}
                 <form
                   className="flex max-w-md gap-x-2 items-center transition-all"
                   onSubmit={(e) => {

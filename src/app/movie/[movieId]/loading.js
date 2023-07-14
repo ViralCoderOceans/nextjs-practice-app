@@ -5,7 +5,7 @@ import React from 'react'
 
 const loading = () => {
   return (
-    <div className='fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center'>
+    <div className='fixed top-1/2 left-1/2 text-white -translate-x-1/2 -translate-y-1/2 flex justify-center items-center'>
       <Spinner size='xl' thickness='8px' className='h-20 w-20' />
     </div>
   )

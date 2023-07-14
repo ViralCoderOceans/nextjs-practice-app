@@ -55,8 +55,13 @@ export default function CategoryPage() {
             </div>
             : <>
               <div className='flex flex-col my-1 transition-all'>
-                <div className="flex max-w-md gap-x-2 items-center transition-all">
-                  {/* <h1 className='text-sm md:text-xl font-normal px-1 transition-all'>Search:</h1> */}
+                <form
+                  className="flex max-w-md gap-x-2 items-center transition-all"
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    searchMovies()
+                    setIsSearched(true)
+                  }}>
                   <input
                     id="search"
                     name="search"
@@ -68,11 +73,8 @@ export default function CategoryPage() {
                     className="min-w-0 flex-auto border-0 bg-white/5 p-2 md:px-3.5 md:py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset transition-all md:text-lg sm:leading-3"
                     placeholder="Search movie here"
                   />
-                  <button type="submit" onClick={() => {
-                    searchMovies()
-                    setIsSearched(true)
-                  }} className="text-black hover:text-white font-semibold p-1.5 md:py-2 mg:px-4 border-2 border-white bg-white hover:bg-zinc-900 transition-all">Search</button>
-                </div>
+                  <button type="submit" className="text-black hover:text-white font-semibold p-1.5 md:py-2 mg:px-4 border-2 border-white bg-white hover:bg-zinc-900 transition-all">Search</button>
+                </form>
                 <hr className='my-2' />
                 <div className='my-1'>
                   <ul className='grid grid-cols-category gap-2 lg:gap-4 transition-all'>
