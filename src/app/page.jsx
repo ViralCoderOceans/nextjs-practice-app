@@ -94,7 +94,7 @@ export default function Home() {
                   ? <h1 className='text-xl text-center my-4'>No results found</h1>
                   : pictureInPicture.isPIP
                     ? <div className='grid grid-cols-movie mt-4 gap-2 overflow-y-auto transition-all'>
-                      {movieData.map((elm) => (
+                      {searchMoviesData.map((elm) => (
                         <div key={elm.id}>
                           <Movie
                             id={elm.id}
@@ -107,7 +107,7 @@ export default function Home() {
                       ))}
                     </div>
                     : <div className='grid grid-cols-movie mt-4 gap-2 overflow-y-auto transition-all'>
-                      {movieData.map((elm) => (
+                      {searchMoviesData.map((elm) => (
                         <div key={elm.id} onClick={() => setIsModalOpen(true)}>
                           <Link href={`/movie/${elm.id}`}>
                             <Movie
