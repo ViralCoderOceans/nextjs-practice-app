@@ -8,6 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import placeHolder from 'src/app/placeholder.png'
 import { piPContext } from '@/app/layout'
+import CloseIcon from '@mui/icons-material/Close';
 
 const page = () => {
   const router = useRouter()
@@ -37,7 +38,7 @@ const page = () => {
       aria-describedby="modal-modal-description"
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 w-full md:w-fit focus:outline-none" >
-        <div className='p-4 md:p-10 w-full md:w-[700px] lg:w-[1000px] max-h-full bg-zinc-900 text-white border border-white overflow-y-auto'>
+        <div className='p-4 pt-7 md:p-10 w-full md:w-[700px] lg:w-[1000px] max-h-full bg-zinc-900 text-white border border-white overflow-y-auto'>
           {
             movieDetails.length === 0
               ? <>
@@ -65,6 +66,12 @@ const page = () => {
               </>
               : <>
                 <hr className='my-2 mb-1' />
+                <button onClick={() => {
+                  setIsModalOpen(false)
+                  router.back()
+                }} className='absolute top-4 right-4 flex items-center border border-white bg-white text-black hover:bg-black hover:text-white transition-all p-1'>
+                  <CloseIcon />
+                </button>
                 <div className='text-lg md:text-xl lg:text-2xl font-bold py-2 bg-white text-black px-4 flex sm:flex-row flex-col justify-between transition-all'>
                   <div className='flex justify-center md:justify-start items-center transition-all'>
                     {movieDetails.title}
