@@ -12,7 +12,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import placeHolder from '../app/placeholder.png'
 
 const PictureInPicture = () => {
-  const { pictureInPicture, setPictureInPicture, isMinimize, setIsMinimize } = useContext(piPContext);
+  const { pictureInPicture, setPictureInPicture, isMinimize, setIsMinimize, setIsModalOpen } = useContext(piPContext);
   return (
     <>
       {
@@ -22,12 +22,15 @@ const PictureInPicture = () => {
             <div className={`border-2 border-white w-[250px] md:w-[250px] lg:w-[450px] z-[999] bg-black`}>
               <div className={`absolute top-[2px] z-[99] flex ${!isMinimize ? 'block' : 'hidden'} transition-all`}>
                 <Link href={`/movie/${pictureInPicture.movieId}`}>
-                  <button onClick={() => setPictureInPicture({
-                    isPIP: false,
-                    title: '',
-                    imgPath: '',
-                    movieId: ''
-                  })
+                  <button onClick={() => {
+                    setPictureInPicture({
+                      isPIP: false,
+                      title: '',
+                      imgPath: '',
+                      movieId: ''
+                    })
+                    setIsModalOpen(true)
+                  }
                   } className='btn flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                     <OpenInNewIcon className='-rotate-90' />
                   </button>
@@ -67,12 +70,15 @@ const PictureInPicture = () => {
               <div className={`w-full py-1 text-lg lg:text-xl text-black font-medium lg:font-semibold flex items-center ${!isMinimize ? 'justify-center' : 'flex-col px-4'} bg-white transition-all`}>
                 <div className={`${!isMinimize ? 'hidden' : 'w-full flex justify-start'} transition-all`}>
                   <Link href={`/movie/${pictureInPicture.movieId}`}>
-                    <button onClick={() => setPictureInPicture({
-                      isPIP: false,
-                      title: '',
-                      imgPath: '',
-                      movieId: ''
-                    })
+                    <button onClick={() => {
+                      setPictureInPicture({
+                        isPIP: false,
+                        title: '',
+                        imgPath: '',
+                        movieId: ''
+                      })
+                      setIsModalOpen(true)
+                    }
                     } className='btn flex items-center bg-white text-black hover:bg-black hover:text-white transition-all px-2 py-1'>
                       <OpenInNewIcon className='-rotate-90' />
                     </button>
