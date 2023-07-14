@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useState } from 'react'
 import PictureInPicture from '@/components/PictureInPicture'
 import { usePathname } from 'next/navigation'
 
