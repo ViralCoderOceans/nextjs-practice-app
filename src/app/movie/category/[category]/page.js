@@ -80,7 +80,10 @@ export default function CategoryPage() {
                   <ul className='grid grid-cols-category gap-2 lg:gap-4 transition-all'>
                     {
                       allCategories.map((elm) => (
-                        <li key={elm.id} onClick={() => push(`/movie/category/${elm.path}`)} className='flex justify-center cursor-pointer lg:text-base px-1 md:px-2 lg:px-4 py-1 mr-1 lg:mr-2 transition-all hover:bg-white hover:text-black'>
+                        <li
+                          key={elm.id}
+                          onClick={() => push(`/movie/category/${elm.path}`)}
+                          className={`flex justify-center cursor-pointer lg:text-base px-1 md:px-2 lg:px-4 py-1 mr-1 lg:mr-2 transition-all ${category === elm.path ? 'bg-white text-black' : 'hover:bg-white hover:text-black'}`}>
                           {elm.title}
                         </li>
                       ))
